@@ -1,0 +1,83 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <title>Inicio de Sesión</title>
+</head>
+<body>
+
+  <!-- Script con la función mostrarError() -->
+  <script>
+    function mostrarError() {
+        console.log('Mostrando ventana emergente');
+
+        // Obtén el parámetro de error de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorParam = urlParams.get('error');
+
+        // Verifica si el parámetro de error está presente
+        if (errorParam) {
+            console.log('Error encontrado:', errorParam);
+
+            // Puedes personalizar este código según tus necesidades de diseño y estilo
+            var errorDiv = document.createElement('div');
+            errorDiv.innerHTML = errorParam;
+            errorDiv.style.backgroundColor = '#f8d7da';
+            errorDiv.style.color = '#721c24';
+            errorDiv.style.marginBottom = '20px';
+            errorDiv.style.borderRadius = '5px';
+            errorDiv.style.position = 'absolute';
+            errorDiv.style.top = '0px';
+            errorDiv.style.left = '0px';
+            errorDiv.style.width = '50%';
+            errorDiv.style.height = '50px';
+            errorDiv.style.display = 'flex';
+            errorDiv.style.alignItems = 'center';
+            errorDiv.style.justifyContent = 'space-around';
+
+            var closeButton = document.createElement('button');
+            closeButton.innerHTML = 'Cerrar';
+            closeButton.style.backgroundColor = '#dc3545';
+            closeButton.style.color = '#fff';
+            closeButton.style.padding = '8px 12px';
+            closeButton.style.border = 'none';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.addEventListener('click', function() {
+                errorDiv.style.display = 'none';
+            });
+
+            errorDiv.appendChild(closeButton);
+
+            document.body.appendChild(errorDiv);
+        }
+    }
+
+    // Llama a la función mostrarError() al cargar la página
+    mostrarError();
+</script>
+
+  <div class="contenedor-Padre">
+    <div class="img-Contenedor"></div>
+    <div class="login-Contenedor">
+      <h1>Inicia Sesión Ahora</h1>
+      <h2>Ingresa tus credenciales y Comienza a trabajar</h2>
+      <span class="span-1-login">Ingrese su Usuario</span>
+      <span class="span-2-login">Ingrese su Contraseña</span>
+      <form id="loginForm" action="/manejarDatosFormulario" method="POST">
+        <div class="user-Div">
+          <input type="text" id="usuarioInput" name="usuario" autocomplete="off">
+        </div>
+        <div class="password-Div">
+          <input type="password" id="contrasenaInput" name="contrasena">
+        </div>
+        <input type="submit" value="Entrar">
+      </form>
+    </div>
+      </div>
+
+</body>
+</html>
