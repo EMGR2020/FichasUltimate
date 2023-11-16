@@ -1,11 +1,67 @@
+<!-- inicio.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <!-- Agrega el enlace a Bootstrap si aún no lo has hecho -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="../js/loader.js"></script>
 </head>
 <body>
-    
+
+     <!--loader.html-->
+<div id="loader-container" class="loader-container">
+    <div class="loader">
+        <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/kkudtejl.json"
+    trigger="loop"
+    delay="2000"
+    style="width:250px;height:250px">
+</lord-icon>
+      <p class="loading-cloud">Cargando...</p>
+    </div>
+  </div>
+
+
+        <nav class="nav-inicio">
+            <ul>
+                <li class="lista-1-inicio">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <span>Buscar</span>
+                </li>
+                <li class="lista-2-inicio">
+                    <ion-icon name="document-outline"></ion-icon>
+                    <span>Excel</span>
+                </li>
+                <li class="lista-3-inicio">
+                    <span>Control de Fichas Catastrales</span>
+                </li>
+                <li class="lista-4-inicio">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                        <span>Agregar</span>
+                </li>
+            </ul>
+        </nav>
+
+    <section class="inicio-data-fichas">
+        <div id="loader" class="text-center">Cargando...</div>
+        <div id="tablaDatos" style="display: none;">
+            <!-- Aquí se mostrará la tabla de datos -->
+        </div>
+        <div id="noDatos" class="text-center" style="display: none;">No se encontraron datos.</div>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../js/username.js"></script>
 </body>
 </html>

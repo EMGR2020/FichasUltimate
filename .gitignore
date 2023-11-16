@@ -1,0 +1,17 @@
+# Node.js
+node_modules/
+
+# Dependiendo del entorno, puedes agregar más exclusiones específicas
+# por ejemplo, para proyectos con Visual Studio Code
+.vscode/
+
+# Logs y archivos temporales
+*.log
+*.tmp
+
+# Entornos de desarrollo
+.env
+
+# Dependiendo del lenguaje de programación y el entorno, puedes agregar
+# más exclusiones, como para proyectos de Java, Python, etc.
+# Consulta ejemplos específicos según tu caso.

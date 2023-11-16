@@ -70,6 +70,21 @@ app.post('/manejarDatosFormulario', (req, res) => {
   });
 });
 
+// Agrega esta ruta al final de tu archivo index.js
+app.get('/manejarDatosFormulario', (req, res) => {
+  // Ejemplo de consulta, reemplázala con la consulta real a tu base de datos
+  const consulta = 'SELECT id, nombre_propietario, tipo_de_actualizacion, clave_catastral, localidad, estado FROM fichas ORDER BY id DESC';
+  db.query(consulta, (error, resultados) => {
+      if (error) {
+          console.error('Error al realizar la consulta:', error);
+          res.status(500).send('Error al obtener datos de la base de datos.');
+          return;
+      }
+
+      res.json(resultados);
+  });
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor en http://localhost:${PORT}`);
