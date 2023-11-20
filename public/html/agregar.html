@@ -1,0 +1,161 @@
+<!-- inicio.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <!-- Agrega el enlace a Bootstrap si aún no lo has hecho -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="../js/loader.js"></script>
+</head> 
+<body>
+
+     <!--loader.html-->
+<div id="loader-container" class="loader-container">
+    <div class="loader">
+        <script src="https://cdn.lordicon.com/lordicon-1.2.0.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/kkudtejl.json"
+    trigger="loop"
+    delay="2000"
+    style="width:250px;height:250px">
+</lord-icon>
+      <p class="loading-cloud">Cargando...</p>
+    </div>
+  </div>
+
+
+        <nav class="nav-inicio">
+            <ul>
+                <a href="./inicio.html" class="enlace-1-inicio">
+                <li class="lista-1-inicio">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <span>Inicio</span>
+                </li>
+            </a>
+            <a href="./busqueda.html" class="enlace-2-inicio">    
+            <li class="lista-2-inicio">
+                <ion-icon name="search-outline"></ion-icon>
+                    <span>Buscar</span>
+                </li>
+            </a>    
+            <a href="./excel.html" class="enlace-3-inicio">
+                <li class="lista-3-inicio">
+                    <ion-icon name="document-outline"></ion-icon>
+                        <span>Excel</span>
+                </li>
+            </a>
+            <li class="lista-4-inicio">
+                    <span>Agregar fichas a la Base de Datos</span>
+                </li>
+            <a href="#"  class="enlace-5-inicio">
+                <li class="lista-5-inicio">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    <span>Cerrar Sesión</span>
+                </li>
+            </a>
+            </ul>
+        </nav>
+
+
+        <form action="/procesarFormulario" method="POST" class="agregar_fichas_db">
+        <label for="nombre_propietario" class="label-1-fichas">Nombre de Propietario:</label>
+        <input type="text" id="nombre_propietario" name="nombre_propietario" required class="input-1-fichas">
+
+        <label for="tipo_de_actualizacion" class="label-2-fichas">Tipo de Actualización:</label>
+        <input type="text" id="tipo_de_actualizacion" name="tipo_de_actualizacion" required class="input-2-fichas">
+
+        <label for="clave_catastral" class="label-3-fichas">Clave Catastral:</label>
+        <input type="text" id="clave_catastral" name="clave_catastral" required class="input-3-fichas">
+
+        <label for="localidad" class="label-4-fichas">Localidad:</label>
+        <input type="text" id="localidad" name="localidad" required class="input-4-fichas">
+
+        <label for="recibido_por" class="label-5-fichas">Recibido Por:</label>
+        <input type="text" id="recibido_por" name="recibido_por" required class="input-5-fichas">
+
+        <label for="entregado_por" class="label-6-fichas">Entregado Por:</label>
+        <input type="text" id="entregado_por" name="entregado_por" required class="input-6-fichas">
+
+        <label for="estado" class="label-7-fichas">Estado:</label>
+        <select id="estado" name="estado" required class="input-7-fichas">
+            <option value="Subida al Sistema">Subida al Sistema</option>
+            <option value="No Subida al Sistema">No Subida al Sistema</option>
+            <option value="Inconsistencia">Inconsistencia</option>
+        </select>
+
+        <button type="submit" class="input-8-fichas">Enviar</button>
+    </form>
+  
+    <style>
+        /* Agrega estilos CSS para la ventana emergente */
+        #popup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+    
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            text-align: center;
+            position: relative; /* Añade esta propiedad */
+        }
+    
+        .close {
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: -270px;
+            font-size: 20px;
+            color:  rgb(255, 0, 0);
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Verifica si hay un parámetro 'exito' en la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const exitoParam = urlParams.get('exito');
+    
+            // Si 'exito' está presente, muestra la ventana emergente
+            if (exitoParam === 'true') {
+                const popup = document.createElement('div');
+                popup.id = 'popup';
+                popup.innerHTML = `
+                    <div class="popup-content">
+                        <span class="close" onclick="cerrarPopup()">&times;</span>
+                        <p>Datos guardados correctamente.</p>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+            }
+        });
+    
+        function cerrarPopup() {
+            // Cierra la ventana emergente al hacer clic en la 'x'
+            const popup = document.getElementById('popup');
+            if (popup) {
+                popup.remove();
+            }
+        }
+    </script>    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

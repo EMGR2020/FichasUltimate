@@ -30,22 +30,8 @@ app.use(bodyParser.json());
 // Ruta para servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta de la página principal
-app.get('/', (req, res) => {
-  // Obtén el parámetro de error de la URL
-  const errorParam = req.query.error;
-
-  if (errorParam) {
-    // Si hay un error, renderiza el index.html con el parámetro de error
-    res.sendFile(path.join(__dirname, 'public', 'index.html') + `?error=${errorParam}`);
-  } else {
-    // Si no hay error, simplemente carga el index.html
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  }
-});
-
-// Ruta para procesar el formulario y mostrar mensaje en la misma página
-app.post('/manejarDatosFormulario', (req, res) => {
+// Rutas para tus páginas
+app.post('/manejarDatosFormularioPass', (req, res) => {
   // Obtener los datos del formulario
   const usuario = req.body.usuario;
   const contrasena = req.body.contrasena;
@@ -70,7 +56,43 @@ app.post('/manejarDatosFormulario', (req, res) => {
   });
 });
 
-// Agrega esta ruta al final de tu archivo index.js
+app.get('/busqueda.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'html', 'busqueda.html'));
+});
+
+app.get('/excel.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'html', 'excel.html'));
+});
+
+app.get('/agregar.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'html', 'agregar.html'));
+});
+
+app.get('/inicio.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'html', 'inicio.html'));
+});
+
+// Ruta para procesar el formulario
+app.post('/procesarFormulario', (req, res) => {
+  // Obtén los datos del formulario desde el cuerpo de la solicitud
+  const { nombre_propietario, tipo_de_actualizacion, clave_catastral, localidad, recibido_por, entregado_por, estado } = req.body;
+
+  // Realiza la inserción en la base de datos
+  const consulta = 'INSERT INTO fichas (nombre_propietario, tipo_de_actualizacion, clave_catastral, localidad, recibido_por, entregado_por, estado) VALUES (?, ?, ?, ?, ?, ?, ?)';
+
+  db.query(consulta, [nombre_propietario, tipo_de_actualizacion, clave_catastral, localidad, recibido_por, entregado_por, estado], (error, resultados) => {
+    if (error) {
+      console.error('Error al insertar datos en la base de datos:', error);
+      res.status(500).json({ mensaje: 'Error al guardar los datos en la base de datos.', error: error.message });
+      return;
+    }
+
+    // Redirige a la página agregar.html con un parámetro
+    res.redirect(303, '/agregar.html?exito=true');
+  });
+});
+
+// Ruta para obtener datos del formulario
 app.get('/manejarDatosFormulario', (req, res) => {
   // Ejemplo de consulta, reemplázala con la consulta real a tu base de datos
   const consulta = 'SELECT id, nombre_propietario, tipo_de_actualizacion, clave_catastral, localidad, estado FROM fichas ORDER BY id DESC';
@@ -84,6 +106,7 @@ app.get('/manejarDatosFormulario', (req, res) => {
       res.json(resultados);
   });
 });
+
 
 // Iniciar el servidor
 app.listen(PORT, () => {

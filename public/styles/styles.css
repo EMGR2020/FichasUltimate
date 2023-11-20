@@ -143,56 +143,103 @@ input[type="submit"] {
   background-color: #162d5a;
 }
 
+.enlace-1-inicio {
+  width: 90px;
+  height: auto;
+  margin-left: 20px;
+}
+
+.enlace-2-inicio {
+  width: 90px;
+  height: auto;
+  margin-left: 20px;
+}
+
+.enlace-3-inicio {
+  width: 90px;
+  height: auto;
+  margin-left: 20px;
+}
+
+.enlace-5-inicio {
+  width: 110px;
+  height: auto;
+  margin-left: 20px;
+}
+
 .lista-1-inicio {
   display: flex;
-  width: 90px;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  margin-left: 20px;
+  align-items: center;
+}
+
+.lista-1-inicio>span {
+  color: var(--text-white);
 }
 
 .lista-2-inicio {
   display: flex;
-  width: 90px;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  margin-left: 20px;
+  align-items: center;
+}
+
+.lista-2-inicio>span {
+  color: var(--text-white);
 }
 
 .lista-3-inicio {
-  width: 1100px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .lista-3-inicio>span {
+  color: var(--text-white);
+}
+
+.lista-4-inicio>span {
   font-size: 28px;
+  color: var(--text-white);
 }
 
 .lista-4-inicio {
+  width: 650px;
   display: flex;
-  width: 90px;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
-.nav-inicio>ul {
+.lista-5-inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 328px;
+  width: 120px;
+}
+
+.lista-5-inicio>span {
+  color: var(--text-white);
+}
+
+ .nav-inicio>ul {
   display: flex;
   width: 100%;
   height: 120px;
-}
-
-.nav-inicio>ul>li {
+  align-items: center;
   list-style: none;
 }
 
-.nav-inicio>ul>li>span {
+.nav-inicio>ul>a>li>span {
   position: relative;
   left: 0px;
+}
+
+.nav-inicio>ul>a {
+  cursor: pointer;
+  text-decoration: none;
 }
 
 ion-icon {
@@ -260,4 +307,163 @@ p {
 
 .loading-cloud {
   color: white;
+}
+
+/* styles.css o tu archivo de estilos existente */
+
+/* Estilo para la ventana emergente */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  text-align: center;
+}
+
+.popup-content>p {
+  color: black;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.agregar_fichas_db {
+  position: relative;
+  top: 0px;
+  left: 100px;
+  width: 90%;
+  height: 80vh;
+}
+
+.agregar_fichas_db>h2 {
+  color: black;
+  position: relative;
+  left: 80px;
+}
+
+.agregar_fichas_db>input {
+  width: 500px;
+  padding: 10px;
+}
+
+.input-1-fichas {
+  position: relative;
+  top: 40px;
+  left: 80px;
+}
+
+.input-2-fichas {
+  position: relative;
+  bottom: 40px;
+  left: 750px;
+}
+
+.input-3-fichas {
+  position: relative;
+  top: 0px;
+  left: 80px;
+}
+
+.input-4-fichas {
+  position: relative;
+  bottom: 80px;
+  left: 750px;
+}
+
+.input-5-fichas {
+  position: relative;
+  bottom: 40px;
+  left: 80px;
+}
+
+.input-6-fichas {
+  position: relative;
+  bottom: 120px;
+  left: 750px;
+}
+.input-7-fichas {
+  position: relative;
+  bottom: 80px;
+  left: 80px;
+  width: 500px;
+  padding: 10px;
+}
+.input-8-fichas {
+  position: relative;
+  bottom: 40px;
+  left: 80px;
+  padding: 10px;
+  background-color: #162d5a;
+  color: white;
+  border: none;
+  width: 1180px;
+}
+
+.label-1-fichas {
+  position: relative;
+  top: 40px;
+  left: 80px;
+}
+
+.label-2-fichas {
+  position: relative;
+  bottom: 40px;
+  left: 750px;
+}
+
+.label-3-fichas {
+  position: relative;
+  top: 0px;
+  left: 80px;
+}
+
+.label-4-fichas {
+  position: relative;
+  bottom: 80px;
+  left: 750px;
+}
+
+.label-5-fichas {
+  position: relative;
+  bottom: 40px;
+  left: 80px;
+}
+
+.label-6-fichas {
+  position: relative;
+  bottom: 120px;
+  left: 750px;
+}
+.label-7-fichas {
+  position: relative;
+  bottom: 80px;
+  left: 80px;
+}
+
+label {
+  width: 250px;
 }
