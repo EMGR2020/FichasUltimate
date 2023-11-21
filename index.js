@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
 
+
+
+
+
 // Configuración de la conexión a la base de datos
 const db = mysql.createConnection({
   host: '127.0.0.1',
@@ -23,14 +27,46 @@ db.connect(err => {
   console.log('Conexión a la base de datos establecida');
 });
 
+
+
+
+
 // Middleware para analizar el cuerpo de las solicitudes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+
+
+
 // Ruta para servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+
+
 // Rutas para tus páginas
+app.get('/busqueda.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'html', 'busqueda.html'));
+});
+
+app.get('/excel.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'html', 'excel.html'));
+});
+
+app.get('/agregar.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'html', 'agregar.html'));
+});
+
+app.get('/inicio.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'html', 'inicio.html'));
+});
+
+
+
+
+
 app.post('/manejarDatosFormularioPass', (req, res) => {
   // Obtener los datos del formulario
   const usuario = req.body.usuario;
@@ -56,21 +92,9 @@ app.post('/manejarDatosFormularioPass', (req, res) => {
   });
 });
 
-app.get('/busqueda.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'html', 'busqueda.html'));
-});
 
-app.get('/excel.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'html', 'excel.html'));
-});
 
-app.get('/agregar.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'html', 'agregar.html'));
-});
 
-app.get('/inicio.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'html', 'inicio.html'));
-});
 
 // Ruta para procesar el formulario
 app.post('/procesarFormulario', (req, res) => {
@@ -92,6 +116,10 @@ app.post('/procesarFormulario', (req, res) => {
   });
 });
 
+
+
+
+
 // Ruta para obtener datos del formulario
 app.get('/manejarDatosFormulario', (req, res) => {
   // Ejemplo de consulta, reemplázala con la consulta real a tu base de datos
@@ -106,6 +134,9 @@ app.get('/manejarDatosFormulario', (req, res) => {
       res.json(resultados);
   });
 });
+
+
+
 
 
 // Iniciar el servidor
